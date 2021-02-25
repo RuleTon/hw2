@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+@Component
 public class ProductRepository {
     private List<Product> products;
 
@@ -34,10 +34,23 @@ public class ProductRepository {
 
     }
 
-    public void add (Product product) {
+    public void add(Product product) {
         if (product.getCost() < 0) {
             throw  new IllegalArgumentException("Cost must be above zero");
         }
         products.add(product);
     }
+
+    public void update(Product product){
+        products.forEach(
+                product1 -> {
+                    if(product1.getId().equals(product.getId())){
+                        product1.setName(product.getName());
+                        product1.setCost(product.getCost());
+                    }
+                }
+        );
+    }
+
+    //delete
 }

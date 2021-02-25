@@ -2,7 +2,7 @@ package ru.gb.spring;
 
 public class Product {
     private Long id;
-    private String productName;
+    private String name;
     private int cost;
 
     public Long getId() {
@@ -13,12 +13,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getCost() {
@@ -29,25 +29,16 @@ public class Product {
         this.cost = cost;
     }
 
-    public Product(Long id, String productName, int cost) {
+    public Product(Long id, String name, int cost) {
         this.id = id;
-        this.productName = productName;
+        this.name = name;
         this.cost = cost;
 
     }
 
     @Override
     public String toString() {
-        return String.format("Product: [%d %s %d]", id, productName, cost);
+        return String.format("Product: [%d %s %d]", id, name, cost);
     }
 
-
-    public void remove(Product product) {
-    }
-
-    public void update(Product product) {
-    }
-
-    public void add(Product product) {
-    }
 }
