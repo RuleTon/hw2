@@ -30,11 +30,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void removeProduct(Integer id) {
-//        productRepository.removeProduct(id);
+        productRepository.remove();
     }
 
     @Override
     public List<Product> listProduct() {
+
         return productRepository.getProducts();
     }
 
@@ -48,11 +49,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Integer countProducts() {
-        return null;
+
+        return productRepository.count();
     }
 
     @Override
-    public Integer avgCostProducts() {
-        return null;
+    public int avgCostProducts() {
+        return productRepository.avgCalc();
     }
+
+
+
+
 }

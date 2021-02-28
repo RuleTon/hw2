@@ -11,5 +11,5 @@ public interface ProductService {
 
     Integer countProducts();
 
-    Integer avgCostProducts();
+    int avgCostProducts();
 }

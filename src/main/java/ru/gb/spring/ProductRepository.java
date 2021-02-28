@@ -7,10 +7,12 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ProductRepository {
     private List<Product> products;
+    private ProductRepository productRepository;
 
 
     public List<Product> getProducts() {
@@ -32,6 +34,10 @@ public class ProductRepository {
         products.add(new Product(9L,"Beet",100));
         products.add(new Product(10L,"Cartoon",100));
 
+
+
+
+
     }
 
     public void add(Product product) {
@@ -52,5 +58,37 @@ public class ProductRepository {
         );
     }
 
-    //delete
+    public void remove() {
+        if (product.getId() <= 0) {
+            throw new IllegalArgumentException("Id can't be less than zero");
+        }
+        products.remove(id);
+
+    }
+
+    public double average(ArrayList <Integer> products) {
+        return products.stream()
+                .mapToInt(Integer::intValue)
+                .average()
+                .orElse(0.0);
+
+    }
+
+    public int avgCalc() {
+        List<Product> products = productRepository.getProducts();
+        if (products.size() == 0) { return  0;}
+        int avg = 0;
+        for (Product p : products) {avg += p.getCost();}
+        avg /= products.size();
+        return avg;
+    }
+
+
+
+
+    public int count() {
+        return products.size();
+    }
+
+
 }
